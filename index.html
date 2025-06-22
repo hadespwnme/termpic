@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terminal Snapshot</title>
+  <link rel="stylesheet" href="src/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="controls">
+    <div class="header-bar">
+      <span>🎨 Pilih Theme:</span>
+      <div class="theme-dropdown">
+        <select id="themeSelect">
+          <option value="dracula">Dracula</option>
+          <option value="monokai">Monokai</option>
+          <option value="nord">Nord</option>
+          <option value="tokyonight">TokyoNight</option>
+        </select>
+      </div>
+    </div>
+
+    <input id="inputUser" placeholder="Username" />
+    <input id="inputHost" placeholder="Hostname" />
+    <input id="inputPath" placeholder="Path" />
+    <input id="inputCommand" placeholder="Command" />
+    <textarea id="inputOutput" rows="8" placeholder="Output..."></textarea>
+
+    <div class="toggle-container">
+      <span>User</span>
+      <label class="switch">
+        <input type="checkbox" id="isRoot">
+        <span class="slider"></span>
+      </label>
+      <span>Root</span>
+    </div>
+
+    <button class="btn" id="generateBtn">🔁 Pratinjau</button>
+    <button class="btn" id="downloadBtn">📸 Unduh PNG</button>
+  </div>
+
+  <div id="terminalWrapper" class="theme-dracula">
+    <div id="terminalHeader">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+    </div>
+    <pre id="terminalCode"></pre>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  <script src="src/script.js"></script>
+</body>
+</html>
