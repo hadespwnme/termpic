@@ -95,9 +95,10 @@ input, textarea {
   position: relative;
   z-index: 1;
   padding: 20px;
-  font-size: 16px;
+  font-size: 12px;
   background: transparent;
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-word;
   font-family: 'Fira Code', monospace;
   line-height: 1.5;
 }
@@ -108,7 +109,9 @@ input, textarea {
   background: transparent;
   font-family: inherit;
   font-size: inherit;
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-word;
+  display: block;
 }
 
 .toggle-container {
