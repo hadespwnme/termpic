@@ -40,9 +40,10 @@ function formatOutputLines(raw) {
     else if (isExec) cls = 'green';
     else if (isDot) cls = 'gray';
 
-    return `<code class="${cls}">${escapeHTML(line)}</code>`;
+    return `<pre class="${cls}">${escapeHTML(line)}</pre>`;
   });
 }
+
 
 function renderPreview() {
   const user = inputUser.value || 'user';
