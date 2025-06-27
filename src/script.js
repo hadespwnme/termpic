@@ -24,14 +24,17 @@ themeSelect.addEventListener('change', () => {
 
 function formatOutputLines(raw) {
   return raw.split('\n').map(line => {
-    if (!line.trim()) return '';
+    const trimmed = line.trim();
+
+    // Jika baris kosong, tetap tampilkan <pre> kosong agar tidak lompat terlalu jauh
+    if (!trimmed) return '<pre class="white">&#8203;</pre>'; // zero-width space
 
     const isRoot = line.includes(' root ');
     const isDir = line.startsWith('d');
     const isLink = line.startsWith('l');
     const isFile = line.startsWith('-');
     const isExec = isFile && /[x]/.test(line.slice(1, 10));
-    const isDot = line.trim().startsWith('.');
+    const isDot = trimmed.startsWith('.');
 
     let cls = 'white';
     if (isRoot) cls = 'red';
@@ -44,7 +47,6 @@ function formatOutputLines(raw) {
   });
 }
 
-
 function renderPreview() {
   const user = inputUser.value || 'user';
   const host = inputHost.value || 'hostname';
@@ -56,10 +58,10 @@ function renderPreview() {
   const promptUser = root ? 'root' : user;
   const promptChar = root ? '#' : '$';
   const prefix     = `${promptUser}@${host}:${path}${promptChar} `;
-  const promptLine = `<code class="prompt">${escapeHTML(prefix + cmd)}</code>`;
+  const promptLine = `<pre class="prompt">${escapeHTML(prefix + cmd)}</pre>`;
 
   const outputLines = formatOutputLines(out);
-  termCode.innerHTML = [promptLine, ...outputLines].join('\n');
+  termCode.innerHTML = [promptLine, ...outputLines].join('');
 }
 
 document.getElementById('generateBtn').addEventListener('click', renderPreview);
